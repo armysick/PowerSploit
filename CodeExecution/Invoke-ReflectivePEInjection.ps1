@@ -1767,9 +1767,7 @@ $RemoteScriptBlock = {
                 $ImportDllHandle = [IntPtr]::Zero
                 $ImportDllPathPtr = (Add-SignedIntAsUnsigned ([Int64]$PEInfo.PEHandle) ([Int64]$ImportDescriptor.Name))
                 $ImportDllPath = [System.Runtime.InteropServices.Marshal]::PtrToStringAnsi($ImportDllPathPtr)
-                #$ImportDllPath = "C:\Windows\System32\vcruntime140d.dll"
-                throw "path: $importDllPath ptr: $importDllPathPtr"
-                 #throw "ptr: $importDllPathPtr"
+                echo "path: $importDllPath ptr: $importDllPathPtr" >>  C:\Users\notinfrasec\Desktop\test.txt
 
                 if ($RemoteLoading -eq $true)
                 {
