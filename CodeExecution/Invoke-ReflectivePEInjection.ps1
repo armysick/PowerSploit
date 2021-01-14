@@ -1767,6 +1767,7 @@ $RemoteScriptBlock = {
                 $ImportDllHandle = [IntPtr]::Zero
                 $ImportDllPathPtr = (Add-SignedIntAsUnsigned ([Int64]$PEInfo.PEHandle) ([Int64]$ImportDescriptor.Name))
                 $ImportDllPath = [System.Runtime.InteropServices.Marshal]::PtrToStringAnsi($ImportDllPathPtr)
+                $importDllPath = 'C:\Windows\System32\'+$ImportDllPath
 
                 if ($RemoteLoading -eq $true)
                 {
@@ -1780,7 +1781,11 @@ $RemoteScriptBlock = {
                 echo "path: $importDllPath ptr: $importDllPathPtr handle: $ImportDllHandle" >>  C:\Users\notinfrasec\Desktop\test.txt
                 if (($ImportDllHandle -eq $null) -or ($ImportDllHandle -eq [IntPtr]::Zero))
                 {
+                    #$ImportDllHandle = $Win32Functions.LoadLibrary.Invoke("C:\Windows\System32\VCRUNTIME140D.dll")
+                    #if (($ImportDllHandle -eq $null) -or ($ImportDllHandle -eq [IntPtr]::Zero))
+                    #{
                     throw "Error importing DLL, DLLName: $ImportDllPath"
+                    #}
                 }
 
                 #Get the first thunk, then loop through all of them
