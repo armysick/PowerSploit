@@ -1768,6 +1768,7 @@ $RemoteScriptBlock = {
                 $ImportDllPathPtr = (Add-SignedIntAsUnsigned ([Int64]$PEInfo.PEHandle) ([Int64]$ImportDescriptor.Name))
                 #$ImportDllPath = [System.Runtime.InteropServices.Marshal]::PtrToStringAnsi($ImportDllPathPtr)
                 $ImportDllPath = "C:\Windows\System32\vcruntime140.dll"
+                echo "path: " . $importDllPath
 
                 if ($RemoteLoading -eq $true)
                 {
