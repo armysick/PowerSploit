@@ -1767,7 +1767,6 @@ $RemoteScriptBlock = {
                 $ImportDllHandle = [IntPtr]::Zero
                 $ImportDllPathPtr = (Add-SignedIntAsUnsigned ([Int64]$PEInfo.PEHandle) ([Int64]$ImportDescriptor.Name))
                 $ImportDllPath = [System.Runtime.InteropServices.Marshal]::PtrToStringAnsi($ImportDllPathPtr)
-                echo "path: $importDllPath ptr: $importDllPathPtr" >>  C:\Users\notinfrasec\Desktop\test.txt
 
                 if ($RemoteLoading -eq $true)
                 {
@@ -1778,6 +1777,7 @@ $RemoteScriptBlock = {
                     $ImportDllHandle = $Win32Functions.LoadLibrary.Invoke($ImportDllPath)
                 }
 
+                echo "path: $importDllPath ptr: $importDllPathPtr handle: $ImportDllHandle" >>  C:\Users\notinfrasec\Desktop\test.txt
                 if (($ImportDllHandle -eq $null) -or ($ImportDllHandle -eq [IntPtr]::Zero))
                 {
                     throw "Error importing DLL, DLLName: $ImportDllPath"
