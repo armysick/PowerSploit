@@ -1785,6 +1785,7 @@ $RemoteScriptBlock = {
                     #if (($ImportDllHandle -eq $null) -or ($ImportDllHandle -eq [IntPtr]::Zero))
                     #{
                     echo "Error importing DLL, DLLName: $ImportDllPath" >> C:\Users\notinfrasec\Desktop\debug.txt
+                    continue
                     #}
                 }
 
