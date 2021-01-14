@@ -1784,8 +1784,8 @@ $RemoteScriptBlock = {
                     #$ImportDllHandle = $Win32Functions.LoadLibrary.Invoke("C:\Windows\System32\VCRUNTIME140D.dll")
                     #if (($ImportDllHandle -eq $null) -or ($ImportDllHandle -eq [IntPtr]::Zero))
                     #{
-                    echo "Error importing DLL, DLLName: $ImportDllPath" >> C:\Users\notinfrasec\Desktop\debug.txt
-                    continue
+                    throw "Error importing DLL, DLLName: $ImportDllPath"
+                    
                     #}
                 }
 
